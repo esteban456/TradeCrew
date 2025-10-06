@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de Administración - TradeCrew</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: #f8fafc;
+      color: #0f172a;
+    }
+
+    header {
+      background: #0b5f3b;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 2rem auto;
+      background: white;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #0b5f3b;
+      text-align: center;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1.5rem;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background: #0b5f3b;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    .no-data {
+      text-align: center;
+      color: #64748b;
+      padding: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 2rem;
+      color: #64748b;
+    }
+
+    #recargar {
+      background: #0b5f3b;
+      color: white;
+      border: none;
+      padding: 0.6rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    #recargar:hover {
+      background: #064c30;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Panel de Administración</h1>
+    <p>Registros del formulario 📋</p>
+  </header>
+
+  <main>
+    <div style="text-align: right;">
+      <button id="recargar">🔄 Actualizar</button>
+    </div>
+
+    <table id="tablaRegistros">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Correo</th>
+          <th>Edad</th>
+          <th>Número</th>
+        </tr>
+      </thead>
+      <tbody id="tablaCuerpo">
+        <tr><td colspan="4" class="no-data">Cargando registros...</td></tr>
+      </tbody>
+    </table>
+  </main>
+
+  <footer>
+    © <span id="year"></span> TradeCrew · Todos los derechos reservados.
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    async function cargarRegistros() {
+      try {
+        const res = await fetch('/admin-data');
+        if (!res.ok) throw new Error('No autorizado o sin conexión');
+
+        const data = await res.json();
+        const cuerpo = document.getElementById('tablaCuerpo');
+        cuerpo.innerHTML = '';
+
+        if (data.length === 0) {
+          cuerpo.innerHTML = '<tr><td colspan="4" class="no-data">No hay registros todavía.</td></tr>';
+          return;
+        }
+
+        data.forEach(r => {
+          const fila = document.createElement('tr');
+          fila.innerHTML = `
+            <td>${r.nombre || '-'}</td>
+            <td>${r.correo || '-'}</td>
+            <td>${r.edad || '-'}</td>
+            <td>${r.numero || '-'}</td>
+          `;
+          cuerpo.appendChild(fila);
+        });
+      } catch (err) {
+        document.getElementById('tablaCuerpo').innerHTML = `
+          <tr><td colspan="4" class="no-data">⚠️ Error al cargar registros.</td></tr>
+        `;
+        console.error(err);
+      }
+    }
+
+    document.getElementById('recargar').addEventListener('click', cargarRegistros);
+    window.onload = cargarRegistros;
+  </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Registro - TradeCrew</title>
+  <style>
+    body { font-family: 'Poppins', sans-serif; background: #f1f5f9; margin: 0; color: #0f172a; }
+    header { background: #0b5f3b; color: white; text-align: center; padding: 1.2rem; }
+    form { background: white; max-width: 500px; margin: 2rem auto; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+    input, button { width: 100%; padding: 0.8rem; margin-top: 0.8rem; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 1rem; }
+    button { background: #0b5f3b; color: white; border: none; cursor: pointer; }
+    button:hover { background: #064c30; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Registro de Inversor</h1>
+  </header>
+
+  <form id="registroForm">
+    <input type="text" name="nombre" placeholder="Nombre completo" required>
+    <input type="email" name="correo" placeholder="Correo electrónico" required>
+    <input type="number" name="edad" placeholder="Edad" required>
+    <input type="tel" name="telefono" placeholder="Número de WhatsApp" required>
+    <button type="submit">Registrar</button>
+  </form>
+
+  <script>
+    document.getElementById('registroForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const datos = Object.fromEntries(new FormData(e.target));
+      const res = await fetch('/registrar', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(datos)
+      });
+      alert(await res.text());
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>
