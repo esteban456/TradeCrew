@@ -17,7 +17,7 @@ const allowedIPs = [
 ];
 
 // 📥 Guardar registros enviados desde el formulario
-app.post('/registro', (req, res) => {
+app.post('/registrar', (req, res) => {
   const dataPath = path.join(__dirname, 'registros.json');
   const nuevoRegistro = req.body;
 
