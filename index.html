@@ -1,76 +1,133 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>TradeCrew</title>
-  <meta name="description" content="¿Te gustaría ganar dinero con pequeñas inversiones? Únete a nuestro equipo de trading desde 10.000 COP y recibe hasta un 80% de retorno. Contáctanos: +57 324 1305755">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Esteban Correa (XCRS)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a2d9d6d66c.js" crossorigin="anonymous"></script>
   <style>
-    body { font-family: 'Poppins', sans-serif; margin: 0; background: #f8fafc; color: #0f172a; }
-    header { background: #0b5f3b; color: white; padding: 1.5rem; text-align: center; }
-    main { max-width: 900px; margin: 2rem auto; padding: 1rem; }
-    h1 { font-size: 2rem; color: #0b5f3b; }
-    .card { background: white; padding: 1.5rem; margin-top: 1rem; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-    .cta { display: inline-block; background: #0b5f3b; color: white; padding: 0.8rem 1.2rem; border-radius: 8px; text-decoration: none; margin-top: 1rem; }
-    .cta:hover { background: #064c30; }
-    footer { text-align: center; padding: 1rem; color: #64748b; font-size: 0.9rem; }
+    :root {
+      --bg-color: #000;
+      --text-color: #fff;
+      --accent-color: #e50914;
+      --card-bg: rgba(255, 255, 255, 0.05);
+    }
+    body.light {
+      --bg-color: #fff;
+      --text-color: #000;
+      --accent-color: #e50914;
+      --card-bg: rgba(0, 0, 0, 0.05);
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      margin: 0;
+      padding: 40px 20px;
+      transition: all 0.3s ease-in-out;
+    }
+    img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--accent-color);
+      box-shadow: 0 0 20px var(--accent-color);
+    }
+    h1 {
+      font-size: 1.8rem;
+      margin-top: 15px;
+    }
+    h2 {
+      font-weight: 300;
+      color: var(--accent-color);
+      margin-bottom: 20px;
+    }
+    p {
+      max-width: 500px;
+      text-align: center;
+      line-height: 1.6;
+      opacity: 0.9;
+    }
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 30px;
+      width: 100%;
+      max-width: 400px;
+    }
+    .link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-decoration: none;
+      background-color: var(--card-bg);
+      color: var(--text-color);
+      padding: 12px;
+      border-radius: 12px;
+      font-weight: 500;
+      transition: 0.3s;
+      border: 1px solid transparent;
+    }
+    .link:hover {
+      border: 1px solid var(--accent-color);
+      transform: scale(1.03);
+      box-shadow: 0 0 10px var(--accent-color);
+    }
+    .toggle-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--accent-color);
+      border: none;
+      color: #fff;
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    footer {
+      margin-top: 40px;
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>TradeCrew</h1>
-    <p>Pequeñas inversiones, grandes resultados</p>
-  </header>
+  <button class="toggle-btn" onclick="toggleTheme()">🌓 Modo</button>
 
-  <main>
-    <section class="card">
-      <h2>¿Quieres ganar dinero con pequeñas inversiones?</h2>
-      <p>Únete a nuestro <strong>equipo de trading</strong> y empieza a invertir con solo <strong>10.000 COP</strong>. Al finalizar el periodo, podrás obtener hasta un <strong>80% de retorno</strong> sobre tu inversión.</p>
-      <a class="cta" href="https://wa.me/573241305755?text=Hola!%20Quiero%20unirme%20al%20equipo%20de%20trading%20con%2010.000%20COP" target="_blank">👉 Unirme ahora por WhatsApp</a>
-    </section>
+  <img src="48b6da2a38dd1b98e8f2399d5d12e638~tplv-tiktokx-cropcenter_1080_1080.jpeg" alt="Foto de perfil">
 
-    <section class="card">
-      <h2>¿Cómo funciona? 🧭</h2>
-      <ol>
-        <li><strong>Inversión inicial:</strong> Aporta 10.000 COP como capital base.</li>
-        <li><strong>Operación:</strong> Nuestro equipo realiza las operaciones en el mercado.</li>
-        <li><strong>Resultado:</strong> Al finalizar el periodo, recibes tu inversión más el 80% de ganancia.</li>
-      </ol>
-    </section>
+  <h1>Esteban Correa <span>(XCRS)</span></h1>
+  <h2>💻 Apasionado por la informática</h2>
 
-    <section class="card">
-      <h2>Ventajas 🌟</h2>
-      <ul>
-        <li>Capital mínimo accesible (10.000 COP).</li>
-        <li>Retornos altos y claros.</li>
-        <li>Transparencia total en cada operación.</li>
-      </ul>
-    </section>
+  <p>
+    Soy experto en desarrollo web (HTML, CSS y JavaScript), creación de servidores de Discord y edición de video.  
+    Trabajo como freelancer y me apasiona todo lo relacionado con la tecnología.
+  </p>
 
-    <section class="card">
-      <h2>Contacto 📲</h2>
-      <p>¿Tienes preguntas o quieres unirte? Escríbenos directamente:</p>
-      <p><strong>WhatsApp:</strong> <a href="https://wa.me/573241305755" target="_blank">+57 324 1305755</a></p>
-    </section>
+  <div class="links">
+    <a href="https://www.tiktok.com/@x.xcrs.x" target="_blank" class="link"><i class="fab fa-tiktok"></i> TikTok</a>
+    <a href="https://www.instagram.com/xcrs456" target="_blank" class="link"><i class="fab fa-instagram"></i> Instagram</a>
+    <a href="https://github.com/esteban456" target="_blank" class="link"><i class="fab fa-github"></i> GitHub</a>
+    <a href="https://wa.me/573059279731" target="_blank" class="link"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+    <a href="https://www.youtube.com/@THERICH919" target="_blank" class="link"><i class="fab fa-youtube"></i> YouTube</a>
+  </div>
 
-    <section class="card" style="background:#fff7ed;">
-      <h2>⚠️ Aviso de riesgo</h2>
-      <p>Las inversiones financieras implican riesgo. Los resultados pueden variar según las condiciones del mercado. Solo invierte dinero que estés dispuesto a asumir como riesgo.</p>
-    </section>
-
-    <section class="card">
-      <h2>Regístrate 📋</h2>
-      <p>¿Listo para unirte? Crea tu registro rápido:</p>
-      <a class="cta" href="registro.html">📝 Ir al registro</a>
-    </section>
-  </main>
-
-  <footer>
-    © <span id="year"></span> Gana con 10K · Todos los derechos reservados.
-  </footer>
+  <footer>© 2025 XCRS | Todos los derechos reservados</footer>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    function toggleTheme() {
+      document.body.classList.toggle('light');
+    }
   </script>
 </body>
 </html>
